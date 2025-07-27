@@ -21,6 +21,9 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071"
   cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true    # discover other services ini all K8s name-spaces, not just our "default"
     openfeign:
       circuitbreaker:
         enabled: true
@@ -66,15 +69,6 @@ management:   # to see in browser http://localhost:8080/actuator
 endpoints:
   shutdown:
     enabled: true
-
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
 
 info:   # info for Eureka Dashboard, which is exposed as actuator endpoint, which we are allowing by management.info.env.enabled
   app:
