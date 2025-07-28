@@ -46,3 +46,23 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.security.properties=/layers/paketo-buildpack
 2025-07-27T18:45:56.425Z  INFO 1 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
 2025-07-27T18:45:57.400Z  INFO 1 --- [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8761 (http)
 2025-07-27T18:45:57.435Z  INFO 1 --- [           main] o.s.c.k.d.DiscoveryServerApplication     : Started DiscoveryServerApplication in 6.685 seconds (process running for 7.296)
+
+
+## Docker images
+
+### for all microservices we call following to generate docker images s17:
+mvn compile jib:dockerBuild
+or .\RunMvnCommandForAllProjects.ps1 -MavenCommand "compile jib:dockerBuild"
+
+docker image ls --filter=reference="jjasonek/*:s17"
+
+Alternatively you can use (on Linux):
+docker images | grep s17
+
+### push images to docker hub:
+docker image push docker.io/jjasonek/accounts:s17
+docker image push docker.io/jjasonek/loans:s17
+docker image push docker.io/jjasonek/cards:s17
+docker image push docker.io/jjasonek/message:s17
+docker image push docker.io/jjasonek/configserver:s17
+docker image push docker.io/jjasonek/gatewayserver:s17
