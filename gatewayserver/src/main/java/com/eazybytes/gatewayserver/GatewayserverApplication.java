@@ -20,7 +20,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableDiscoveryClient      //This may be optional
 public class GatewayserverApplication {
 
     public static void main(String[] args) {

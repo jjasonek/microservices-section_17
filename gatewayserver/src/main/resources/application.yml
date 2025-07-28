@@ -46,7 +46,7 @@ management:
     tags:
       application: ${spring.application.name}
 
-info:   # info for Eureka Dashboard, which is exposed as actuator endpoint, which we are allowing by management.info.env.enabled
+info:   # info for actuator/info endpoint AND/OR monitoring tools
   app:
     name: "gatewayserver"
     description: "Eazy Bank Gateway Server Application"
